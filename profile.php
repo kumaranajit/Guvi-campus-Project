@@ -4,7 +4,7 @@ if (isset($_SESSION["id"])) {
   $id = $_SESSION["id"];
   $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM register WHERE id = $id"));
 } else {
-  header("Location: index.php");
+  header("Location: index.html");
 }
 ?>
 <!DOCTYPE html>
@@ -32,7 +32,7 @@ if (isset($_SESSION["id"])) {
         <div class="collapse navbar-collapse" id="mynavbar">
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#">My Profile</a>
+              <a class="nav-link" href="#">Logged in as<p style="font-weight:900" ><?php echo $user["name"]; ?></p> </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" hidden href="javascript:void(0)">Link</a>

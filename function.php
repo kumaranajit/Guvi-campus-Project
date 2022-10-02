@@ -1,6 +1,16 @@
 <?php
+
 session_start();
-$conn = mysqli_connect("localhost", "root", "", "user_data");
+
+// Create connection
+$conn = mysqli_connect("localhost", "test", "123456", "user_data");
+// Check connection
+if ($conn->connect_error) {
+  die("sqlDB Connection failed: " . $conn->connect_error);
+}
+
+
+$conn = mysqli_connect("localhost", "test", "123456", "user_data");
 if (isset($_POST["decide"])) {
     if ($_POST["decide"] == "register") {
         register();
@@ -13,8 +23,8 @@ function register()
     global $conn;
     $name = $_POST["name"];
     $email = $_POST["email"];
-    $password1 = $_POST["password1"];
-    $repassword = $_POST["repassword"];
+    $password1 = $_POST['password1']; 
+    $repassword =$_POST['repassword']; 
     $DOB = date('y-m-d', strtotime($_POST["DOB"]));
     $age = $_POST["age"];
     $contactno = $_POST["contactno"];
